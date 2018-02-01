@@ -1,0 +1,894 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Jupyter Notebook Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <meta name="robots" content="noindex,nofollow">
+  
+
+  <!--NEW RELIC Start Perf Measurement-->
+  
+  <!--NREND-->
+
+  <!-- Le styles -->
+  <script src="/cdn-cgi/apps/head/MuIIl4I_IVFkxldaVu1mdWee9as.js"></script><link href="/static/build/styles.css?v=d2f574aebb7720ccb35207ba1db4cfbb" rel="stylesheet">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="/static/ico/ipynb_icon_16x16.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/static/ico/apple-touch-icon-144-precomposed.png?v=5a3c9ede93e2a8b8ea9e3f8f3da1a905">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="/static/ico/apple-touch-icon-114-precomposed.png?v=45d86fc8f24dc00638035e1dd7a6d898">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="/static/ico/apple-touch-icon-72-precomposed.png?v=540b5eb0f3cfd25f1439d1c9bd30e15f">
+  <link rel="apple-touch-icon-precomposed"
+        href="/static/ico/apple-touch-icon-57-precomposed.png?v=225f0590e187e1458625654f10a28f56">
+  
+  
+
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Notebook on nbviewer">
+  <meta name="twitter:description" content="Check out this Jupyter notebook!">
+
+  
+  <meta name="twitter:domain" content="nbviewer.ipython.org">
+  <meta name="twitter:image:src" content="http://ipython.org/ipython-doc/dev/_images/ipynb_icon_128x128.png">
+
+  
+    <link href="/static/build/notebook.css?v=7ff1df8ccee6dd13babbd66843869949" rel="stylesheet">
+  
+
+  
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      init_mathjax = function() {
+        if (window.MathJax) {
+          // MathJax loaded
+          MathJax.Hub.Config({
+            TeX: {
+              equationNumbers: {
+                autoNumber: "AMS",
+                useLabelIds: true
+              }
+            },
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: true,
+              processEnvironments: true
+            },
+            displayAlign: 'center',
+            "HTML-CSS": {
+              styles: {'.MathJax_Display': {"margin": 0}},
+              linebreaks: { automatic: true }
+            }
+          });
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        }
+      }
+      init_mathjax();
+    </script>
+  
+
+  
+    <script>
+      (function() {
+        function addWidgetsRenderer() {
+          var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+          var scriptElement = document.createElement('script');
+          var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+          var widgetState;
+
+          try {
+            widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+            if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+              widgetRendererSrc = 'https://unpkg.com/jupyter-js-widgets@*/dist/embed.js';
+            }
+          } catch(e) {}
+
+          scriptElement.src = widgetRendererSrc;
+          document.body.appendChild(scriptElement);
+        }
+
+        document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+      }());
+    </script>
+  
+
+</head>
+
+<body class="nbviewer">
+
+  <!-- These are loaded at the top of the body so they are available to
+       notebook cells when they are loaded below. -->
+  <script src="/static/components/jquery/dist/jquery.min.js?v=c9f5aeeca3ad37bf2aa006139b935f0a"></script>
+  <script src="/static/components/requirejs/require.js?v=6da8be361b9ee26c5e721e76c6d4afce"></script>
+  <script src="/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"></script>
+<!-- Navbar
+================================================== -->
+  <nav id="menubar" class="navbar navbar-default navbar-fixed-top" data-spy="affix">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/nav_logo.svg?v=479cefe8d932fb14a67b93911b97d70f" width="159"/>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="active" href="http://jupyter.org">JUPYTER</a>
+          </li>
+          <li>
+    <a href="/faq" title="FAQ" >
+      
+        <span>FAQ</span>
+      
+    </a>
+  </li>
+
+          
+  
+    
+      
+        <li>
+    <a href="/format/script/github/jmportilla/Complete-Python-Bootcamp/blob/master/Errors%20and%20Exceptions%20Handling.ipynb" title="View as Code" >
+      <span class="fa fa-code fa-2x menu-icon"></span>
+      <span class="menu-text">View as Code</span>
+    </a>
+  </li>
+      
+    
+  
+    
+  
+
+  
+    <li>
+    <a href="#" title="Python 2 Kernel" >
+      <span class="fa fa-server fa-2x menu-icon"></span>
+      <span class="menu-text">Python 2 Kernel</span>
+    </a>
+  </li>
+  
+
+  
+    <li>
+    <a href="https://github.com/jmportilla/Complete-Python-Bootcamp/blob/master/Errors%20and%20Exceptions%20Handling.ipynb" title="View on GitHub" >
+      <span class="fa fa-github fa-2x menu-icon"></span>
+      <span class="menu-text">View on GitHub</span>
+    </a>
+  </li>
+  
+
+  <li>
+    <a href="https://raw.githubusercontent.com/jmportilla/Complete-Python-Bootcamp/master/Errors%20and%20Exceptions%20Handling.ipynb" title="Download Notebook" download>
+      <span class="fa fa-download fa-2x menu-icon"></span>
+      <span class="menu-text">Download Notebook</span>
+    </a>
+  </li>
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      
+      
+    </div>
+  </nav>
+
+  <div class="container container-main">
+    
+  
+  <ol class="breadcrumb">
+    
+      <li>
+        <a href="/github/jmportilla/Complete-Python-Bootcamp/tree/master">Complete-Python-Bootcamp</a>
+      </li>
+    
+      <li>
+        <a href="/github/jmportilla/Complete-Python-Bootcamp/tree/master/Errors and Exceptions Handling.ipynb">Errors and Exceptions Handling.ipynb</a>
+      </li>
+    
+  </ol>
+  
+  <div id="notebook">
+    <div id="notebook-container">
+      
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Errors-and-Exception-Handling">Errors and Exception Handling<a class="anchor-link" href="#Errors-and-Exception-Handling">&#182;</a></h1><p>In this lecture we will learn about Errors and Exception Handling in Python. You've definitely already encountered errors by this point in the course. For example:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;Hello</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre><span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-1-23e01f0d17c8&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
+<span class="ansi-red-fg">    print &#39;Hello</span>
+               ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> EOL while scanning string literal
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note how we get a SyntaxError, with the further description that it was an EOL (End of Line Error) while scanning the string literal. This is specific enough for us to see that we forgot a single quote at the end of the line. Understanding these various error types will help you debug your code much faster.</p>
+<p>This type of error and description is known as an Exception. Even if a statement or expression is syntactically correct, it may cause an error when an attempt is made to execute it. Errors detected during execution are called exceptions and are not unconditionally fatal.</p>
+<p>You can check out the full list of built-in exceptions <a href="https://docs.python.org/2/library/exceptions.html">here</a>. now lets learn how to handle errors and exceptions in our own code.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="try-and-except">try and except<a class="anchor-link" href="#try-and-except">&#182;</a></h2><p>The basic terminology and syntax used to handle errors in Python is the <strong>try</strong> and <strong>except</strong> statements. The code which can cause an exception to occue is put in the <em>try</em> block and the handling of the exception is the implemented in the <em>except</em> block of code. The syntax form is:</p>
+
+<pre><code>try:
+   You do your operations here...
+   ...
+except ExceptionI:
+   If there is ExceptionI, then execute this block.
+except ExceptionII:
+   If there is ExceptionII, then execute this block.
+   ...
+else:
+   If there is no exception then execute this block. 
+
+</code></pre>
+<p>We can also just check for any exception with just using except: To get a better understanding of all this lets check out an example: We will look at some code that opens and writes a file:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;testfile&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Test write this&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="c1"># This will only check for an IOError exception and then execute this print statement</span>
+   <span class="k">print</span> <span class="s2">&quot;Error: Could not find file or read data&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="k">print</span> <span class="s2">&quot;Content written successfully&quot;</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Content written successfully
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now lets see what would happen if we did not have write permission (opening only with 'r'):</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;testfile&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Test write this&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="c1"># This will only check for an IOError exception and then execute this print statement</span>
+   <span class="k">print</span> <span class="s2">&quot;Error: Could not find file or read data&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="k">print</span> <span class="s2">&quot;Content written successfully&quot;</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Error: Could not find file or read data
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great! Notice how we only printed a statement! The code still ran and we were able to continue doing actions and running code blocks. This is extremely useful when you have to account for possible input errors in your code. You can be prepared for the error and keep running code, instead of your code just breaking as we saw above.</p>
+<p>We could have also just said except: if we weren't sure what exception would occur. For example:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;testfile&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Test write this&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># This will check for any exception and then execute this print statement</span>
+   <span class="k">print</span> <span class="s2">&quot;Error: Could not find file or read data&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="k">print</span> <span class="s2">&quot;Content written successfully&quot;</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Error: Could not find file or read data
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great! Now we don't actually need to memorize that list of exception types! Now what if we kept wanting to run code after the exception occurred? This is where <strong>finally</strong> comes in.</p>
+<h2 id="finally">finally<a class="anchor-link" href="#finally">&#182;</a></h2><p>The finally: block of code will always be run regardless if there was an exception in the try code block. The syntax is:</p>
+
+<pre><code>try:
+   Code block here
+   ...
+   Due to any exception, this code may be skipped!
+finally:
+   This code block would always be executed.
+
+</code></pre>
+<p>For example:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+   <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;testfile&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Test write statement&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+   <span class="k">print</span> <span class="s2">&quot;Always execute finally code blocks&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Always execute finally code blocks
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use this in conjunction with except. Lets see a new example that will take into account a user putting in the wrong input:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">askint</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Looks like you did not enter an integer!&quot;</span>
+            
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Finally, I executed!&quot;</span>
+        <span class="k">print</span> <span class="n">val</span>       
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">askint</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Please enter an integer: 5
+Finally, I executed!
+5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">askint</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Please enter an integer: five
+Looks like you did not enter an integer!
+Finally, I executed!
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">UnboundLocalError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-36-6ee53d339e7e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>askint<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-33-728ec4c542c2&gt;</span> in <span class="ansi-cyan-fg">askint</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>         <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span>             <span class="ansi-green-fg">print</span> <span class="ansi-blue-fg">&#34;Finally, I executed!&#34;</span>
+<span class="ansi-green-fg">----&gt; 9</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">print</span> val
+
+<span class="ansi-red-fg">UnboundLocalError</span>: local variable &#39;val&#39; referenced before assignment</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice how we got an error when trying to print val (because it was never properly assigned) Lets remedy this by asking the user and checking to make sure the input type is an integer:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">askint</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Looks like you did not enter an integer!&quot;</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;Try again-Please enter an integer: &quot;</span><span class="p">))</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Finally, I executed!&quot;</span>
+        <span class="k">print</span> <span class="n">val</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">askint</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Please enter an integer: f
+Looks like you did not enter an integer!
+Try again-Please enter an integer: f
+Finally, I executed!
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-40-6ee53d339e7e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>askint<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-39-e540976abf48&gt;</span> in <span class="ansi-cyan-fg">askint</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>         <span class="ansi-green-fg">except</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>             <span class="ansi-green-fg">print</span> <span class="ansi-blue-fg">&#34;Looks like you did not enter an integer!&#34;</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">             </span>val <span class="ansi-blue-fg">=</span> int<span class="ansi-blue-fg">(</span>raw_input<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Try again-Please enter an integer: &#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>         <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span>             <span class="ansi-green-fg">print</span> <span class="ansi-blue-fg">&#34;Finally, I executed!&#34;</span>
+
+<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;f&#39;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hmmm...that only did one check. How can we continually keep checking? We can use a while loop!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">askint</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Looks like you did not enter an integer!&quot;</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s1">&#39;Yep thats an integer!&#39;</span>
+            <span class="k">break</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Finally, I executed!&quot;</span>
+        <span class="k">print</span> <span class="n">val</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">askint</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Please enter an integer: five
+Looks like you did not enter an integer!
+Finally, I executed!
+Please enter an integer: five
+Looks like you did not enter an integer!
+Finally, I executed!
+Please enter an integer: four
+Looks like you did not enter an integer!
+Finally, I executed!
+Please enter an integer: 4
+Yep thats an integer!
+Finally, I executed!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Great! Now you know how to handle errors and exceptions in Python with the try, except, else, and finally notation!</strong></p>
+
+</div>
+</div>
+</div>
+ 
+
+
+    </div>
+  </div>
+
+  </div>
+
+
+  
+    <footer class="footer hidden-print">
+      <div class="container">
+        <div class="col-md-4">
+          <p>
+            This website does not host notebooks, it only renders notebooks
+            available on other websites.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <p>
+            Delivered by <a href="http://www.fastly.com/">Fastly</a>,
+            Rendered by <a href="https://developer.rackspace.com/?nbviewer=awesome">Rackspace</a>
+          </p>
+          <p>
+            nbviewer GitHub <a href="https://github.com/jupyter/nbviewer">repository</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          
+  
+            
+              <p>
+                nbviewer version:
+                <a href="https://github.com/jupyter/nbviewer/commit/67ee47e55fa697614e03aa060a86019f75f2ddca">
+                  67ee47e
+                </a>
+              </p>
+            
+          
+  
+  <p>
+    nbconvert version: <a href="https://github.com/jupyter/nbconvert/releases/tag/5.3.1">
+      5.3.1
+    </a>
+  </p>
+  
+
+          
+  
+  
+  <p>
+    Rendered
+    <span class='date' data-date='Wed, 31 Jan 2018 22:12:12 UTC' title='Wed, 31 Jan 2018 22:12:12 UTC'>(Wed, 31 Jan 2018 22:12:12 UTC)</span>
+  </p>
+  
+
+        </div>
+      </div>
+    </footer>
+  
+
+  <script src="/static/components/bootstrap/js/bootstrap.min.js?v=5869c96cc8f19086aee625d670d741f9"></script>
+  <script src="/static/components/headroom.js/dist/headroom.min.js?v=b0a311ea668f8e768ea375f4a7abb81c"></script>
+  <script src="/static/components/headroom.js/dist/jQuery.headroom.min.js?v=f3a1bae118315d0c234afc74dc6aab71"></script>
+
+  
+  
+  <script>
+    $(function(){ $("#menubar").headroom({
+      tolerance: 5,
+      offset: 205,
+      classes: {
+        initial: "animated",
+        pinned: "slideInDown",
+        unpinned: "slideOutUp"
+      }
+    })});
+  </script>
+
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-52617120-5', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+  <script>
+    require({
+        paths: {
+          moment: "/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"
+        }
+      }, ["moment"], function(moment){
+      var date = $("footer .date"),
+        m = moment(new Date(date.data('date'))),
+        update = function(){ date.text(m.fromNow()); };
+      setInterval(update, 61*1000);
+      update();
+      var w = $(window).scroll(function(event){
+        $("body").toggleClass("scrolled", w.scrollTop() > 0);
+      });
+    });
+  </script>
+
+  <!--NEW RELIC Stop Perf Measurement-->
+  
+  <!--NEW RELIC End-->
+</body>
+</html>
